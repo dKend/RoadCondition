@@ -23,33 +23,21 @@ public class DataCollectSubmitService extends Service implements SensorEventList
     private FusedLocationProviderClient locationClient;
     private SensorManager sManager;
     private Sensor accSensor;
-    private OrientationVectorManager baseMeasurement;   //  used for detecting changes in range etc.
+    private Sensor gSensor;
+    private OrientationVectorManager base;   //  used for detecting changes in range etc.
     private int calibrationNextIndex;
-    private MathVector calibration;
-    private MathVector last;
-    private MathVector delta;
-    private float pollDelay = -1;       // in seconds. default disabled
-    private final float pollStopAfter = 30;   // number of times to run the poll to create average values
     private final float threshhold = 1;
 
     public DataCollectSubmitService(){
-
+        /*
+        sManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        accSensor = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        gSensor = sManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
+        */
     }
 
     public int getCalibrationNextIndex() {
         return calibrationNextIndex;
-    }
-
-    public float getPollStopAfter() {
-        return pollStopAfter;
-    }
-
-    public MathVector getLast() {
-        return last;
-    }
-
-    public MathVector getDelta() {
-        return delta;
     }
 
     public BumpReport generateReport(Location location, Intensity intensity){
@@ -59,17 +47,6 @@ public class DataCollectSubmitService extends Service implements SensorEventList
     }
 
     // calls calibrate and then uses the results to decide the axis(s) of analysis
-    public int init(){
-        int ret = -1;
-
-        return ret;
-    }
-
-    public int calibrate(){
-        int ret = -1;
-
-        return ret;
-    }
 
     public int handleCalibrationValues(float[] values){
         int ret = -1;

@@ -101,9 +101,7 @@ public class DataCollectSubmitServiceTest {
         assertTrue("handleCalibrationValues doesn't fail on n element array.", test.handleCalibrationValues(invalidArraySizes[4]) == -1);
         //test properly sized array
         assertTrue("handleCalibrationValues fails when given an array of proper size.", test.handleCalibrationValues(validArrays[1]) == 0);
-        for(int i=test.getCalibrationNextIndex(); i < test.getPollStopAfter(); i++){
-            assertTrue("handleCalibrationValues fails when given an array of proper size and less than max readings have occured.", test.handleCalibrationValues(validArrays[1]) == 0);
-        }
+
         assertTrue("handeCalibreationValues doesn't return 1 when the reading array is full.",test.handleCalibrationValues(validArrays[1]) == 1);
     }
 	

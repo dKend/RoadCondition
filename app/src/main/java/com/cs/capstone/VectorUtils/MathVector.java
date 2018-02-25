@@ -160,4 +160,9 @@ public class MathVector {
 	public static MathVector createK(){
 		return new MathVector(0, 0, 1);
 	}
+
+	@Override
+	public String toString(){
+		return "<x: "+x+", y: "+y+", z: "+z+">";
+	}
 }
