@@ -1,7 +1,7 @@
 package com.cs.capstone.VectorUtils;
 
 /**
- * Created by damia on 18-Feb-18.
+ * Created by damian on 18-Feb-18.
  */
 
 public class OrientationVectorManager {

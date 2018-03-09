@@ -1,6 +1,5 @@
 package com.cs.capstone;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import android.location.Location;
 
@@ -8,10 +7,10 @@ import android.location.Location;
  * Created by damian on 03-Feb-18.
  */
 
-public class BumpReport implements Serializable {
-    private Location coords;
+public class BumpReport implements java.io.Serializable{
+    private transient Location coords;
     private String zipcode;
-    private LocalDate date;
+    private transient LocalDate date;
     private Intensity intensity;
 	public BumpReport(Location coords, String zipcode, LocalDate date, Intensity intensity){
 	    this.coords = coords;
@@ -31,5 +30,4 @@ public class BumpReport implements Serializable {
     public Intensity getIntensity(){
         return intensity;
     }
-
 }
