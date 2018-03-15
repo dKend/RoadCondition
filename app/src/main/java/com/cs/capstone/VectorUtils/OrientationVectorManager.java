@@ -11,13 +11,29 @@ public class OrientationVectorManager {
     private static final double defaultErrorValue = 0.01;
     //  cant determine if were driving via accelerometer since it only give acceleration values and a car isn't always accelerating while driving
 
+    /**
+     * Constructor for OrientationVectorManager with only gravity vector defined
+     * @param gravity MathVector
+     */
     public OrientationVectorManager(MathVector gravity){
         this(gravity, defaultGravityValue, defaultErrorValue);
     }
+
+    /**
+     * Constructor for OrientationVectorManager wth gravity vector and gravityValue defined.
+     * @param gravity MathVector.
+     * @param gravityValue double.
+     */
     public OrientationVectorManager(MathVector gravity, double gravityValue){
         this(gravity, gravityValue, defaultErrorValue);
     }
 
+    /**
+     * Constructor for OrientationVectorManager with gravity vector, gravityValue and ErrorValue defined.
+     * @param gravity MathVector
+     * @param gravityValue double
+     * @param errorValue double
+     */
     public OrientationVectorManager(MathVector gravity, double gravityValue, double errorValue){
         try{
             this.gravity = new MaskedMathVector(gravity, gravityValue, errorValue);
@@ -28,14 +44,29 @@ public class OrientationVectorManager {
         }
     }
 
+    /**
+     * Constructor. same as above with float array instead.
+     * @param gravity float[]
+     */
     public OrientationVectorManager(float[] gravity) {
         this(gravity, defaultGravityValue, defaultErrorValue);
     }
 
+    /**
+     * Above.
+     * @param gravity float[]
+     * @param gravityValue double
+     */
     public OrientationVectorManager(float[] gravity, double gravityValue) {
         this(gravity, gravityValue, defaultErrorValue);
     }
 
+    /**
+     * Above.
+     * @param gravity float[]
+     * @param gravityValue double
+     * @param errorValue double
+     */
     public OrientationVectorManager(float[] gravity, double gravityValue, double errorValue) {
         try{
             this.gravity = new MaskedMathVector(gravity, gravityValue, errorValue);
@@ -47,6 +78,11 @@ public class OrientationVectorManager {
 
     }
 
+    /**
+     * Computes the value of reading minus the gravity vector.
+     * @param reading  MathVector
+     * @return MathVector
+     */
     public MathVector getFilteredReading(MathVector reading){
 		MathVector ret = null;
         if(reading != null){
@@ -56,6 +92,11 @@ public class OrientationVectorManager {
 		return ret;
     }
 
+    /**
+     * Updates the value of gravity based on the given reading.
+     * @param reading MathVector
+     * @return int; 0 on success, 1 when the orientation hasnt changed, -1 on failure.
+     */
     public int updateOrientation(MathVector reading){
         int ret = -1;
         if(reading != null){
@@ -69,6 +110,12 @@ public class OrientationVectorManager {
         return ret;
     }
 
+    /**
+     * Checks if the given reading results in the same mask when placed inside a copy of the gravity
+     * vector.
+     * @param reading MathVector.
+     * @return boolean; true on orientation changed, false otherwise.
+     */
     public boolean isOrientationChanged(MathVector reading){
         boolean ret = false;
         if(reading != null){
