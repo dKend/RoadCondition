@@ -9,7 +9,7 @@ public class OrientationVectorManager {
     private MaskedMathVector gravity;
     private static final double defaultGravityValue = 9.81;
     private static final double defaultErrorValue = 0.01;
-    //  cant determine if were driving via accelerometer since it only give acceleration values and a car isn't always accelerating while driving
+    //  cant determine if we're driving via accelerometer since it only gives acceleration values and a car isn't always accelerating while driving
 
     /**
      * Constructor for OrientationVectorManager with only gravity vector defined
